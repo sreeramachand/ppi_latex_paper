@@ -1,0 +1,22 @@
+{
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk (biber)",
+      "command": "latexmk",
+      "args": [
+        "-pdf",
+        "-interaction=nonstopmode",
+        "-synctex=1",
+        "-shell-escape",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk (biber)",
+      "tools": ["latexmk (biber)"]
+    }
+  ],
+  "latex-workshop.latex.autoBuild.run": "onSave"
+}

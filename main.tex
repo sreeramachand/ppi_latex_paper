@@ -1,0 +1,404 @@
+% Advances in Mathematics: Scientific Journal 9 (2020), no.10, 7859–7864
+% ISSN: 1857-8365 (printed); 1857-8438 (electronic)
+% https://doi.org/10.37418/amsj.9.10.18
+% Special Issue on ACMAMP‑2020
+
+\documentclass[11pt]{amsart}
+
+% -----------------------------------------------------------------------------
+%     Packages
+% -----------------------------------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage[backend=biber, style=numeric, sorting=none, defernumbers=true, doi=true, url=true]{biblatex} %most critical
+\usepackage{mathrsfs}
+\usepackage{fullpage}
+\usepackage{setspace}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs} 
+\usepackage{graphicx} %ensures tables look good
+\usepackage{doi} %ensures references have DOI
+\usepackage{float} %ensures proper placement of table. use  \begin{table}[H]
+\usepackage{hyperref}
+
+
+% -----------------------------------------------------------------------------
+%     Geometry & Hyperref setup (journal style mimicked)
+% -----------------------------------------------------------------------------
+\addbibresource{references.bib}
+\geometry{
+  paper=a4paper,
+  total={160mm,247mm},
+  left=25mm,
+  top=25mm,
+}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black,
+  pdftitle={Domatic number of an undirected graph},
+  pdfauthor={Dronamraju~Satyavathi and M.~Siva~Parvathi},
+}
+
+% -----------------------------------------------------------------------------
+%     Theorem styles (AMSJ house‑style)
+% -----------------------------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% -----------------------------------------------------------------------------
+%     Shortcuts
+% -----------------------------------------------------------------------------
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+
+% -----------------------------------------------------------------------------
+%     Front‑matter
+% -----------------------------------------------------------------------------
+\title[Mathematical Signatures of Malignancy: Forecasting Glioblastoma Multiforme By Implementing Graph Algorithms in Gene Coexpression Networks]{Mathematical Signatures of Malignancy: Forecasting Glioblastoma Multiforme By Implementing Graph Algorithms in Gene Coexpression Networks}
+
+\author{
+Adityakrishna SreeRamachandrarao\textsuperscript{1} \and
+Anusha Lakshmi Dharmavathi\textsuperscript{2} \and
+Satyavathi Dronamraju\textsuperscript{3}
+}
+\address{Department of Applied Mathematics, Sri Padmavati Mahila Visvavidyalayam, Tirupati\,–517502, Andhra Pradesh, India}
+\email{\textsuperscript{1}satyadronamraju11@gmail.com} %interesting, apparently yahoo mail doesn't work!! Only gmail working...
+
+%\author[M.\,S. Parvathi]{M. SIVA PARVATHI\textsuperscript{2}}
+%\address{Department of Applied Mathematics, Sri Padmavati Mahila Visvavidyalayam, Tirupati\,–517502, Andhra Pradesh, India}
+%\email{\textsuperscript{2}parvathimani2008@gmail.com}
+
+\thanks{\noindent\textsuperscript{1}\,Corresponding author}
+
+\subjclass[2010]{05C69}
+\keywords{Gene coexpression, Pearson's Correlation Coefficient, Mann-Whitney U test}
+
+
+\begin{document}
+
+% -----------------------------------------------------------------------------
+%     Journal Header
+% -----------------------------------------------------------------------------
+
+
+% -----------------------------------------------------------------------------
+%     Title & Authors
+% -----------------------------------------------------------------------------
+
+%Following chunk caused duplicate title and authors. 
+%\begin{center}
+%  {\LARGE\bfseries \MakeUppercase{Domatic number of an undirected graph $G_{m,n}$}}\\[1.5em]
+%  {\large SYEDA ASMA KAUSER\textsuperscript{1} \and M. SIVA PARVATHI\textsuperscript{2}}
+%\end{center} 
+
+\bigskip
+
+% -----------------------------------------------------------------------------
+%     Abstract
+% -----------------------------------------------------------------------------
+\begin{abstract}
+    Traditionally, genomic analyses rely on examining key genes that when mutated greatly increase the risk of malignancy. However, there are a multitude of cases where cancer was formed despite not having the genes identified to have the greatest risk of malignancy. This necessitates a novel form of genetic screening that takes into account the whole rather than the part. Graph Theory was therefore posited as a holistic cancer screening tool, where genes are the nodes, the edges are the interactions between the genes, and the Pearson's Correlation Coefficient, if $p\text{-value} < \alpha \hspace{0.5em} \text{(where } \alpha = 0.05\text{)}$, are the edge weights in what is known as a gene coexpression analysis. A comparative analysis was done between cancer and normal networks, consisting of 4 key mathematical signatures that can be expanded upon. These are degree distribution and power-law exponent, clique cover number and Ramsey theory, k-core decomposition, and spectral analysis using Laplacian eigenvalue spectrum. All of these signatures reveal unique graphical properties which have numerous implications on the etiology of cancer. In this study, the 4 mathematical signatures were validated for efficacy and the p-values examined for significance. Additional topological data as well as histogram figures were examined to further investigate the advent of the 4 tested mathematical signatures. Our results confirmed significant differences, and in future we can look at how these differences vary in other varieties of cancer in a meta-analysis. 
+  %An undirected graph $G_{m,n}$ is defined on the vertex set $V = I_n = \set{1,2,3,\dots,n}$ where $u,v\in V$ are adjacent \textit{iff} $u\neq v$ and $u+v$ is not divisible by $m$, with $m>1$.  For a graph $G=(V,E)$, a subset $S\subseteq V$ is called a \emph{dominating set} if every vertex $a\in V$ is either in $S$ or is adjacent to a vertex in~$S$.  The \emph{domatic number} $d(G)$ of $G$ is the maximum integer $k$ such that $V$ can be partitioned into $k$ pairwise disjoint dominating sets $D_1,\dots,D_k$. Such a partition is called a \emph{domatic partition}. We present several results on domination parameters of the graph $G_{m,n}$, deriving bounds for its domatic number for various values of $m$ and~$n$.
+\end{abstract}
+
+\maketitle
+
+% -----------------------------------------------------------------------------
+%     Section 1
+% -----------------------------------------------------------------------------
+\section{Introduction}
+Glioblastoma multiforme (GBM) represents the most malignant form of astrocytic tumors as it is characterized by rapid proliferation, and has a higher incidence observed in older patient populations. Despite extensive sequencing efforts, patient prognosis remains poor, highlighting the insufficiency of approaches that focus solely on individual genes or mutations. GBM is increasingly understood as a complex, emergent phenomenon arising from dysregulated interactions among genes, proteins, and  pathways.
+
+Graph theory provides a natural mathematical language for capturing such interactions. By representing genes as nodes and coexpression relationships as edges, gene coexpression networks encode collective behavior that is invisible to single-gene analyses. Differences between healthy and malignant tissues can thus be framed as differences in network topology. This perspective aligns with systems biology, where disease states correspond to altered network organization rather than isolated molecular defects.
+
+This paper investigates whether malignancy leaves reproducible mathematical signatures in gene coexpression networks and whether such signatures can be quantified using established tools from graph theory and spectral analysis.
+
+\section{Application of Graph Networks}
+Mathematical and computational models are increasingly being used in various disciplines of science due to the limitations, both scientific and ethical, of in vivo and in vitro studies. In this study, research was conducted in silico, to avoid such scientific and ethical concerns, with glioblastoma multiforme and normal brain gene expression data.  After copious research and testing, several key graph theoretic analytical signatures each revealing a unique characteristic of a gene coexpression network were identified to better elucidate the differences between a cancer and normal network. 
+
+The first signature we will discuss is degree distribution and power law exponent. We hypothesize that cancer networks follow scale-free behavior. Scale-free behavior is that which follows the power-law degree distribution \cite{barabasi1999emergence}. Scale-free networks also demonstrate preferential attachment growth models, meaning that as the power-law degree distribution is established, it only gets exacerbated in a positive feedback loop as dysregulation causes more dysregulation in the hub regulatory nodes \cite{newman2005power}. According to our hypothesis, cancer-affected regulatory hub genes are overexpressed causing unchecked cellular growth culminating in cancer \cite{jeong2001lethality}. The power-law exponent gamma should also be lower in cancer networks as low gamma values mean heavier tails, more power-law tendencies, and presence of hub nodes \cite{barabasi1999emergence}. 
+
+The second signature we will discuss is clique cover number and Ramsey theory.  Clique cover number is defined as the number of complete subgraphs to cover all vertices \cite{golumbic2004algorithmic}. Ramsey theory reveals that in any sufficiently large graph, a large clique or independent set must be present \cite{graham1990ramsey}, and furthermore that a predictable and specific substructure will emerge \cite{erdos1935combinatorial}. We hypothesize cancer networks have a higher clique cover number, insinuating dense but aberrant interconnectivity. This is due to increased gene expression and mutations aiding metabolic rewiring and immune system evasion archetypal of cancer. Integrating Ramsey theory, we further conclude that we will see a clear substructure in the graph of density versus clique size in the cancer network. 
+
+The third signature we will discuss is k-core decomposition. K-core decomposition measures core depth, revealing insights on the balance of connectivity. K-core decomposition works by removing nodes with a degree lower than k until all remaining nodes are k or higher \cite{seidman1983network}. Hierarchical structure is also revealed as central and peripheral nodes are differentiated \cite{batagelj2003core}. This can help identify networks that are deeply co-regulated \cite{wuchty2003evolutionary}. We hypothesize that in cancer networks, global fragmentation is high due to mutations breaking interactions, hub gene dysregulation, and sparse rewiring of the network. Furthermore, there is noisier gene expression, antagonistic and spurious gene expression, and loss of functional redundancy due to reliance on few specific pathways. 
+
+The fourth and final signature to be discussed is Laplacian eigenvalue spectrum. The Laplacian matrix is found by the difference between the degree matrix and the adjacency matrix, and in our case we implemented the signed Laplacian due to the presence of negative weights \cite{kunegis2010spectral}. The algebraic connectivity measures robustness and cohesion of the graph \cite{fiedler1973algebraic}, while the multiplicity of 0 eigenvalue reveals the number of connected components. Negative eigenvalues imply presence of antagonistic modules and conflicting subgraphs \cite{hou2005bounds}. Spectral moments reflect pathway redundancy \cite{chung1997spectral}. We hypothesize that in cancer there will be a lower algebraic connectivity implying weak global connectivity. We further hypothesize that there will be more negative eigenvalues in cancer networks due to antagonistic modules and conflicting subgraphs. 
+
+The aim of our paper is to analyze these mathematical signatures and test significance through high-throughput analysis. If successful, it may be possible to predict and take preventative measures on people found to have cancer like gene-expression signatures. This has the potential to revolutionize genetic analysis and better the prognosis of millions of cancer patients across the world. 
+
+%Throughout this paper graphs are finite, simple, and without isolated vertices.
+%A vertex $v$ is \emph{pendant} if $\deg(v)=1$ and \emph{isolated} if $\deg(v)=0$.
+%A neighbour of a pendant vertex is termed a \emph{support vertex}.
+
+
+%%SUPER GOOD TABLE!!! use \begin{table}[!ht] if you don't want whitespace. 
+{\Large
+\begin{table}[H]
+\centering
+\caption{Comparison of Hypothesized Graph Features}
+\renewcommand{\arraystretch}{1.8} %fix this to make table taller
+\resizebox{\textwidth}{!}{ %\begin{tabular}{@{}llll@{}}
+\begin{tabular}{@{}llll@{}}
+\toprule
+\textbf{Metric} & \textbf{Cancer Network (Glioblastoma)} & \textbf{Normal Brain Network} \\
+\hline
+\textbf{Degree Distribution \& Power-Law} & Heavier tail; lower $\gamma$ ($\gamma \approx 2.0$--$2.5$); more hubs & Lighter tail; higher $\gamma$ ($\gamma \approx 2.5$--$3.5$); fewer hubs \\
+\hline
+\textbf{Clique Cover \& Ramsey Structure} & Higher clique cover; overlapping, conflicting communities & Lower clique cover; modular but cleaner community boundaries \\
+\hline
+\textbf{k-Core Decomposition} & Higher max coreness; deeper, tightly nested cores & Lower coreness; flatter, less nested hierarchy \\
+\hline
+\textbf{Laplacian (or Signed) Spectrum} & Spread out, with possible \textbf{negative} eigenvalues (due to dysregulation) & Tightly clustered, all positive eigenvalues; highly cohesive \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+}
+%END OF TABLE
+
+% -----------------------------------------------------------------------------
+%     Materials and Methods
+% -----------------------------------------------------------------------------
+
+\section{Materials and Methods}
+First, we obtain data from TCGA \cite{gbmcancerdata} and GTEX \cite{normalbraindata} data sources, the former referring to cancer gene expression data and the latter referring to normal gene expression data. This allows for a comparative analysis between cancer and normal and better demonstrates the effectiveness of mathematical signatures in cancer diagnostics and prevention. Next, we use NetworkX and Python to run a gene co-expression analysis. The code will select random genes from the cancer data and find the same genes in the normal data. After filtering unwanted genes and doing relevant log transformations, it will then take the Pearson correlation coefficient of every co-expression pair. Correlations that are significant with an alpha of 0.05 will be added to the graph network. False discovery and outliers will be eliminated using Benjamini-Hochberg adjustment \cite{benjaminihochberg1995}. Finally, after the networks for both cancer and normal are finalized, then graph theory theorems will be used to analyze and compare the networks. 
+
+%\section{Analytical Signatures of Signed Coexpression Networks}
+In this section we formally introduce four key graph‐theoretic signatures—degree distribution and its power‐law exponent, clique cover number and Ramsey theory, $k$–core decomposition, and the signed Laplacian eigenvalue spectrum—and present the main definitions and theorems that underpin their use in distinguishing cancer from normal gene coexpression networks.
+
+\subsection{Degree Distribution in Networks}
+The degree of a node $i$, denoted $k_i$, is the number of edges incident on that node. The degree distribution $P(k)$ is the probability that a randomly selected node has degree exactly $k$. In many real‐world networks (biological, social, technological), the tail of $P(k)$ often follows a power law:
+\[
+  P(k) \sim C\,k^{-\alpha}, \quad k \ge k_{\min},
+  \label{eq:powerlaw_pdf}
+\]
+where $\alpha>1$ is the power-law exponent, $k_{\min}$ is the lower bound above which the power law holds, and $C$ is a normalization constant:
+\[
+  C = \biggl(\sum_{k=k_{\min}}^{\infty} k^{-\alpha}\biggr)^{-1}.  \label{eq:normalization}
+\]
+
+\subsection{Maximum-Likelihood Estimation (MLE) of \texorpdfstring{$\alpha$}{alpha}}
+Given observed degrees $\{k_i\}$ with $k_i \ge k_{\min}$ for $i=1,\dots,n$, the MLE of $\alpha$ for discrete data is given by \cite{clauset2009power}:
+\[
+  \widehat{\alpha}
+  = 1 + n \biggl[ \sum_{i=1}^n \ln\!\Bigl(\frac{k_i}{k_{\min} - 0.5}\Bigr) \biggr]^{-1}.
+  \label{eq:mle_alpha}
+\]
+This estimator minimizes the negative log-likelihood
+\[
+  \mathcal{L}(\alpha) = -\,n\ln C(\alpha,k_{\min}) + \alpha \sum_{i=1}^n \ln k_i.
+\]
+In practice, one selects $k_{\min}$ by minimizing the Kolmogorov--Smirnov distance between the empirical cumulative distribution function (CDF) and the fitted power‐law CDF.
+
+\subsection{Goodness‐of‐Fit \texorpdfstring{$p$}{p}-Value via Bootstrapping}
+To test whether the power law is a plausible fit:
+\begin{enumerate}
+  \item Fit $\widehat{\alpha}$ and record the Kolmogorov--Smirnov statistic $D_{\rm obs}$.
+  \item Generate many synthetic datasets of size $n$ drawn from a power law with exponent $\widehat{\alpha}$ and the same $k_{\min}$.
+  \item Refit each synthetic dataset, computing its KS statistic $D_{\rm synth}$.
+  \item The $p$-value is the fraction of synthetic $D_{\rm synth}$ that exceed $D_{\rm obs}$:
+    \[
+      p = \frac{\#\{D_{\rm synth} \ge D_{\rm obs}\}}{\text{number of simulations}}.
+    \]
+  If $p>0.1$, the power law is considered a plausible model; if $p<0.1$, it is rejected.  
+\end{enumerate}
+
+\subsection{Log‐Likelihood Ratio Tests}
+To compare the power-law model to an alternative heavy-tailed distribution (e.g., exponential or log-normal), consider two competing PDFs $p_1(k)$ and $p_2(k)$. Compute their log-likelihoods on the same data $\{k_i\}$:
+\[
+  \mathcal{L}_1 = \sum_{i=1}^n \ln p_1(k_i), \quad
+  \mathcal{L}_2 = \sum_{i=1}^n \ln p_2(k_i).
+\]
+The log-likelihood ratio is
+\[
+  R = \mathcal{L}_1 - \mathcal{L}_2.
+  \label{eq:llr}
+\]
+A positive $R$ indicates support for model~1 (e.g., power law), while $R<0$ favors model~2. Significance can be assessed via Vuong's method or by bootstrap sampling under the null model \cite{Vuong1989}.
+
+\subsection{Clique Cover Number}
+
+For a graph $G=(V,E)$, a \emph{clique cover} is a collection of cliques $\{C_1,\dots,C_k\}$ such that every vertex $v\in V$ lies in at least one $C_i$.  The \textbf{clique cover number} $\theta(G)$ is the minimum size of such a collection:
+\[
+  \theta(G)
+  = \min\bigl\{k : \exists\, C_1,\dots,C_k \text{ all cliques, } V = \bigcup_{i=1}^k C_i \bigr\}.
+\]
+Since covering $V$ by cliques in $G$ corresponds to coloring the complement graph $\overline G$, one has
+\[
+  \theta(G) 
+  = \chi\bigl(\overline G\bigr),
+\]
+where $\chi$ denotes the chromatic number.  If $\omega(G)$ is the size of a maximum clique in $G$, then
+\[
+  \omega(G) \le\, \theta(G) \le\, |V|.
+\]
+
+\subsection{Ramsey Theory}
+
+The \emph{Ramsey number} $R(s,t)$ is the smallest integer $N$ such that every graph on $N$ vertices contains either a clique of size $s$ or an independent set of size $t$:
+\[
+  R(s,t) = \min\{N : \forall\,G\text{ on }N\text{ vertices, } \omega(G)\ge s \;\vee\; \alpha(G)\ge t\}.
+\]
+Erd\H{o}s and Szekeres proved the classical bound:
+\[
+  R(s,t) \le \binom{s+t-2}{s-1},
+  \quad\text{and in particular}\quad
+  R(s,s) \le \binom{2s-2}{s-1} \sim \frac{4^{s-1}}{\sqrt{\pi(s-1)}}.
+\]
+
+\subsection{K-core Decomposition}
+
+Let \(G = (V,E)\) be an undirected graph. The \emph{\(k\)-core} of \(G\) is the maximal subgraph in which every vertex has degree at least \(k\). Formally, define
+\[
+C_k(G)
+\;=\;
+\max \bigl\{\,H = (V_H, E_H)\subseteq G : \delta(H)\ge k\bigr\},
+\]
+where \(\delta(H)\) denotes the minimum degree of subgraph \(H\).
+
+Each node \(v\in V\) is assigned a \emph{core number} \(\phi(v)\), given by
+\[
+\phi(v)
+\;=\;
+\max\bigl\{\,k : v\in C_k(G)\bigr\}.
+\]
+Equivalently, \(\phi(v)\) is the largest \(k\) such that \(v\) remains after iteratively pruning all nodes of degree less than \(k\).
+
+\subsection{Signed Graph and Laplacian: Theory and Definitions}
+
+Let \(G = (V, E^+, E^-)\) be a signed graph, where \(V\) is the set of vertices, and the edge set is partitioned into positive edges \(E^+\) (e.g.\ activating interactions) and negative edges \(E^-\) (e.g.\ inhibitory interactions).
+
+The \emph{signed adjacency matrix} \(A^s \in \mathbb{R}^{n \times n}\) is defined entrywise by
+\[
+A^s_{ij}
+\;=\;
+\begin{cases}
++1, & (i,j)\in E^+,\\[6pt]
+-1, & (i,j)\in E^-,\\[6pt]
+0,  & \text{otherwise}.
+\end{cases}
+\]
+
+The \emph{signed degree matrix} \(D^s\) is diagonal, with entries
+\[
+D^s_{ii}
+\;=\;
+\sum_{j=1}^n \bigl|A^s_{ij}\bigr|,
+\]
+so that each diagonal entry counts the sum of the absolute weights of edges incident on node \(i\).
+
+The \emph{signed Laplacian} is then given by
+\[
+L^s
+\;=\;
+D^s \;-\; A^s,
+\]
+which is symmetric and positive semi-definite.
+
+The eigenvalues of \(L^s\) encode structural balance properties of the signed graph:
+\[
+0 \;=\; \lambda_1 \;\leq\; \lambda_2 \;\leq\; \cdots \;\leq\; \lambda_n,
+\]
+where each \(\lambda_i\) satisfies the eigenvalue equation
+\[
+L^s v_i \;=\; \lambda_i v_i.
+\]
+The multiplicity of the zero eigenvalue corresponds to the number of connected balanced components in \(G\).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% -----------------------------------------------------------------------------
+%     Section 3
+% -----------------------------------------------------------------------------
+\section{Results and Conclusion}
+
+Our results are as follow. 
+% ---------- Page 1: Two Graphs ----------
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{trial_1_example/trial1norm_net.png}
+        \caption{Normal Network}
+        \label{fig:graph1}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{trial_1_example/trial1onc_net.png}
+        \caption{Cancer Network}
+        \label{fig:graph2}
+    \end{subfigure}
+    \caption{Comparison Between Two Gene Coexpression Networks.}
+    \label{fig:graphs}
+\end{figure}
+
+\noindent
+%Interpretation text here, discussing Figs.~\ref{fig:trial_1_example/trial1cliq_comp} and \ref{fig:trial_1_example/trial1cliq_comp}.
+
+%\clearpage
+
+% ---------- Page 2: Four Images ----------
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{trial_1_example/trial1powerlaw_comp.png}
+        \caption{Degree Distribution and Power Law}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{trial_1_example/trial1cliq_comp.png}
+        \caption{Clique Cover Number and Ramsey Theory}
+    \end{subfigure}
+    \vspace{1em}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{trial_1_example/trial1k_core_dist.png}
+        \caption{K-core Decomposition}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \includegraphics[width=\linewidth]{trial_1_example/trial1laplacian_eigval_spec.png}
+        \caption{Laplacian Eigenvalue Spectrum}
+    \end{subfigure}
+
+    \caption{Four Mathematical Signatures of Malignancy.}
+    \label{fig:fourimages}
+\end{figure}
+
+\noindent
+
+%\clearpage this would make a new page start
+
+% ---------- Page 3+: Long Analysis ----------
+\subsection{Analysis, Interpretations, and Conclusions}
+In order to validate the aforementioned four key mathematical signatures of malignancy, we can first start with the figures, and then follow up with a statistical and tabular data analysis. The first set of figures is a comparison between cancer network and normal network. 
+
+From this comparison, a few visual observations can be gleaned. The normal network is more balanced in edge weights than the cancer network. This is due to the fact that cancerous physiology at the cellular level involves overexpressed and mutations in central key regulatory genes. This overexpression prevents the cell cycle from working properly resulting in such malignancies. Furthermore, there are more overlapping and conflicting communities in the cancer network. This again, is related to graph theory. Clique Cover and Ramsey Theory state 
+%Now you can write as much as you like. LaTeX will handle page breaks for you.Cite earlier figures like Fig.~\ref{fig:graphs}.
+
+% -----------------------------------------------------------------------------
+%     References
+% -----------------------------------------------------------------------------
+\printbibliography
+%\vspace{2em}
+%\noindent\textit{$^1$Email: \href{mailto:asmaxlnc@gmail.com}{asmaxlnc@gmail.com}}\\
+%\textit{$^2$Email: \href{mailto:parvathimani2008@gmail.com}{parvathimani2008@gmail.com}}
+%\vspace{1em}
+%\noindent\textit{$^{1,2}$Department of Applied Mathematics,}\\
+%\textit{Sri Padmavati Mahila Visvavidyalayam,}\\
+%\textit{Tirupati, Andhra Pradesh, India.}
+\end{document}
