@@ -192,26 +192,26 @@ The degree of a node $i$, denoted $k_i$, is the number of edges incident on that
 \]
 where $\alpha>1$ is the power-law exponent, $k_{\min}$ is the lower bound above which the power law holds, and $C$ is a normalization constant:
 \[
-  C = \biggl(\sum_{k=k_{\min}}^{\infty} k^{-\alpha}\biggr)^{-1}.  \label{eq:normalization}
+  C = \biggl(\sum_{k=k_{\min}}^{\infty} k^{-\alpha}\biggr)^{-1}.  \label{eq:normalization} %chktex 3
 \]
 
 \subsection{Maximum-Likelihood Estimation (MLE) of \texorpdfstring{$\alpha$}{alpha}}
 Given observed degrees $\{k_i\}$ with $k_i \ge k_{\min}$ for $i=1,\dots,n$, the MLE of $\alpha$ for discrete data is given by~\cite{clauset2009power}:
 \[
   \widehat{\alpha}
-  = 1 + n \biggl[ \sum_{i=1}^n \ln\!\Bigl(\frac{k_i}{k_{\min} - 0.5}\Bigr) \biggr]^{-1}.
+  = 1 + n \biggl[ \sum_{i=1}^n \ln\!\Bigl(\frac{k_i}{k_{\min} - 0.5}\Bigr) \biggr]^{-1}. %chktex 3
   \label{eq:mle_alpha}
 \]
 This estimator minimizes the negative log-likelihood
 \[
   \mathcal{L}(\alpha) = -\,n\ln C(\alpha,k_{\min}) + \alpha \sum_{i=1}^n \ln k_i.
 \]
-In practice, one selects $k_{\min}$ by minimizing the Kolmogorov—Smirnov distance between the empirical cumulative distribution function (CDF) and the fitted power law CDF.
+In practice, one selects $k_{\min}$ by minimizing the Kolmogorov—Smirnov distance between the empirical cumulative distribution function (CDF) and the fitted power law CDF. %chktex 13
 
 \subsection{Goodness~of~Fit \texorpdfstring{$p$}{p}-Value via Bootstrapping}
 To test whether the power law is a plausible fit:
 \begin{enumerate}
-  \item Fit $\widehat{\alpha}$ and record the Kolmogorov--Smirnov statistic $D_{\rm obs}$.
+  \item Fit $\widehat{\alpha}$ and record the Kolmogorov--Smirnov statistic $D_{\rm obs}$. %chktex 8
   \item Generate many synthetic datasets of size $n$ drawn from a power law with exponent $\widehat{\alpha}$ and the same $k_{\min}$.
   \item Refit each synthetic dataset, computing its KS statistic $D_{\rm synth}$.
   \item The $p$-value is the fraction of synthetic $D_{\rm synth}$ that exceed $D_{\rm obs}$:
@@ -232,7 +232,7 @@ The log-likelihood ratio is
   R = \mathcal{L}_1 - \mathcal{L}_2.
   \label{eq:llr}
 \]
-A positive $R$ indicates support for model~1 (e.g., power law), while $R<0$ favors model~2. Significance can be assessed via Vuong's method or by bootstrap sampling under the null model \cite{Vuong1989}.
+A positive $R$ indicates support for model~1 (e.g., power law), while $R<0$ favors model~2. Significance can be assessed via Vuong's method or by bootstrap sampling under the null model~\cite{Vuong1989}.
 
 \subsection{Clique Cover Number}
 
@@ -338,15 +338,15 @@ Our results are as follow.
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\linewidth]{trial_1_example/trial1norm_net.png}
         \caption{Normal Network}
-        \label{fig:graph1}
+        \label{fig:graph1} %chktex 24
     \end{subfigure}\hfill
     \begin{subfigure}{0.45\textwidth}
         \includegraphics[width=\linewidth]{trial_1_example/trial1onc_net.png}
         \caption{Cancer Network}
-        \label{fig:graph2}
+        \label{fig:graph2} %chktex 24
     \end{subfigure}
     \caption{Comparison Between Two Gene Coexpression Networks.}
-    \label{fig:graphs}
+    \label{fig:graphs} %chktex 24
 \end{figure}
 
 \noindent
@@ -376,7 +376,7 @@ Our results are as follow.
     \end{subfigure}
 
     \caption{Four Mathematical Signatures of Malignancy.}
-    \label{fig:fourimages}
+    \label{fig:fourimages} %chktex 24
 \end{figure}
 
 \noindent
@@ -393,7 +393,7 @@ From this comparison, a few visual observations can be gleaned. The normal netwo
 % -----------------------------------------------------------------------------
 %     References
 % -----------------------------------------------------------------------------
-\printbibliography
+\printbibliography %chktex 1
 %\vspace{2em}
 %\noindent\textit{$^1$Email: \href{mailto:asmaxlnc@gmail.com}{asmaxlnc@gmail.com}}\\
 %\textit{$^2$Email: \href{mailto:parvathimani2008@gmail.com}{parvathimani2008@gmail.com}}
