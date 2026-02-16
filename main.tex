@@ -12,7 +12,6 @@
 \usepackage{url}
 \usepackage{enumitem}
 \usepackage{geometry}
-\usepackage{hyperref}
 \usepackage[backend=biber, style=numeric, sorting=none, defernumbers=true, doi=true, url=true]{biblatex} %most critical
 \usepackage{mathrsfs}
 \usepackage{fullpage}
@@ -24,9 +23,11 @@
 \usepackage{subcaption}
 \usepackage{booktabs} 
 \usepackage{graphicx} %ensures tables look good
-\usepackage{doi} %ensures references have DOI
 \usepackage{float} %ensures proper placement of table. use  \begin{table}[H]
 \usepackage{hyperref}
+
+
+
 
 
 % -----------------------------------------------------------------------------
@@ -67,20 +68,20 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\set}[1]{\left\{#1\right\}}
-\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
 
 % -----------------------------------------------------------------------------
 %     Front‑matter
 % -----------------------------------------------------------------------------
-\title[Mathematical Signatures of Malignancy: Forecasting Glioblastoma Multiforme By Implementing Graph Algorithms in Gene Coexpression Networks]{Mathematical Signatures of Malignancy: Forecasting Glioblastoma Multiforme By Implementing Graph Algorithms in Gene Coexpression Networks}
+\title[Network Topology and Functional Enrichment Analysis of GWAS-Derived Genes Reveal Hub Proteins and Pathway Modules in Type 1 Diabetes]{Network Topology and Functional Enrichment Analysis of GWAS-Derived Genes Reveal Hub Proteins and Pathway Modules in Type 1 Diabetes}
 
 \author{
-Adityakrishna SreeRamachandrarao\textsuperscript{1} \and
-Anusha Lakshmi Dharmavathi\textsuperscript{2} \and
-Satyavathi Dronamraju\textsuperscript{3}
+Satyavathi Dronamraju\textsuperscript{1} \and
+M. Siva Parvathi \textsuperscript{2} 
 }
 \address{Department of Applied Mathematics, Sri Padmavati Mahila Visvavidyalayam, Tirupati\,–517502, Andhra Pradesh, India}
 \email{\textsuperscript{1}satyadronamraju11@gmail.com} %interesting, apparently yahoo mail doesn't work!! Only gmail working...
+\email{\textsuperscript{2}parvatimani2008@gmail.com}
 
 %\author[M.\,S. Parvathi]{M. SIVA PARVATHI\textsuperscript{2}}
 %\address{Department of Applied Mathematics, Sri Padmavati Mahila Visvavidyalayam, Tirupati\,–517502, Andhra Pradesh, India}
@@ -115,8 +116,7 @@ Satyavathi Dronamraju\textsuperscript{3}
 %     Abstract
 % -----------------------------------------------------------------------------
 \begin{abstract}
-    Traditionally, genomic analyses rely on examining key genes that when mutated greatly increase the risk of malignancy. However, there are a multitude of cases where cancer was formed despite not having the genes identified to have the greatest risk of malignancy. This necessitates a novel form of genetic screening that takes into account the whole rather than the part. Graph Theory was therefore posited as a holistic cancer screening tool, where genes are the nodes, the edges are the interactions between the genes, and the Pearson's Correlation Coefficient, if $p\text{-value} < \alpha \hspace{0.5em} \text{(where } \alpha = 0.05\text{)}$, are the edge weights in what is known as a gene coexpression analysis. A comparative analysis was done between cancer and normal networks, consisting of 4 key mathematical signatures that can be expanded upon. These are degree distribution and power-law exponent, clique cover number and Ramsey theory, k-core decomposition, and spectral analysis using Laplacian eigenvalue spectrum. All of these signatures reveal unique graphical properties which have numerous implications on the etiology of cancer. In this study, the 4 mathematical signatures were validated for efficacy and the p-values examined for significance. Additional topological data as well as histogram figures were examined to further investigate the advent of the 4 tested mathematical signatures. Our results confirmed significant differences, and in future we can look at how these differences vary in other varieties of cancer in a meta-analysis. 
-  %An undirected graph $G_{m,n}$ is defined on the vertex set $V = I_n = \set{1,2,3,\dots,n}$ where $u,v\in V$ are adjacent \textit{iff} $u\neq v$ and $u+v$ is not divisible by $m$, with $m>1$.  For a graph $G=(V,E)$, a subset $S\subseteq V$ is called a \emph{dominating set} if every vertex $a\in V$ is either in $S$ or is adjacent to a vertex in~$S$.  The \emph{domatic number} $d(G)$ of $G$ is the maximum integer $k$ such that $V$ can be partitioned into $k$ pairwise disjoint dominating sets $D_1,\dots,D_k$. Such a partition is called a \emph{domatic partition}. We present several results on domination parameters of the graph $G_{m,n}$, deriving bounds for its domatic number for various values of $m$ and~$n$.
+    Genome-wide association studies (GWAS) have identified numerous loci associated with Type 1 Diabetes (T1D), yet the functional relationships among implicated genes remain incompletely understood. In this study, we applied a network-based systems biology framework to investigate the topological and functional organization of GWAS-derived T1D genes. Genes associated with significant GWAS SNPs were retrieved from the GWAS Catalog and mapped onto a protein–protein interaction (PPI) network using data from the STRING database. Graph-theoretic metrics—including degree centrality, betweenness centrality, and clustering coefficient—were used to identify hub proteins and key network modules. Functional enrichment analyses were conducted using Gene Ontology and pathway databases, revealing significant overrepresentation of immune response, cytokine signaling, and pancreatic $\beta$-cell–related processes. Several highly connected hub genes correspond to known T1D susceptibility genes, while others represent novel candidates potentially involved in disease pathogenesis. These findings demonstrate that network topology provides critical insight into the biological mechanisms underlying T1D and highlight candidate molecular targets for further experimental validation.
 \end{abstract}
 
 \maketitle
@@ -134,13 +134,13 @@ This paper investigates whether malignancy leaves reproducible mathematical sign
 \section{Application of Graph Networks}
 Mathematical and computational models are increasingly being used in various disciplines of science due to the limitations, both scientific and ethical, of in vivo and in vitro studies. In this study, research was conducted in silico, to avoid such scientific and ethical concerns, with glioblastoma multiforme and normal brain gene expression data.  After copious research and testing, several key graph theoretic analytical signatures each revealing a unique characteristic of a gene coexpression network were identified to better elucidate the differences between a cancer and normal network. 
 
-The first signature we will discuss is degree distribution and power law exponent. We hypothesize that cancer networks follow scale-free behavior. Scale-free behavior is that which follows the power-law degree distribution \cite{barabasi1999emergence}. Scale-free networks also demonstrate preferential attachment growth models, meaning that as the power-law degree distribution is established, it only gets exacerbated in a positive feedback loop as dysregulation causes more dysregulation in the hub regulatory nodes \cite{newman2005power}. According to our hypothesis, cancer-affected regulatory hub genes are overexpressed causing unchecked cellular growth culminating in cancer \cite{jeong2001lethality}. The power-law exponent gamma should also be lower in cancer networks as low gamma values mean heavier tails, more power-law tendencies, and presence of hub nodes \cite{barabasi1999emergence}. 
+The first signature we will discuss is degree distribution and power law exponent. We hypothesize that cancer networks follow scale-free behavior. Scale-free behavior is that which follows the power-law degree distribution~\cite{barabasi1999emergence}. Scale-free networks also demonstrate preferential attachment growth models, meaning that as the power-law degree distribution is established, it only gets exacerbated in a positive feedback loop as dysregulation causes more dysregulation in the hub regulatory nodes~\cite{newman2005power}. According to our hypothesis, cancer-affected regulatory hub genes are overexpressed causing unchecked cellular growth culminating in cancer~\cite{jeong2001lethality}. The power-law exponent gamma should also be lower in cancer networks as low gamma values mean heavier tails, more power-law tendencies, and presence of hub nodes~\cite{barabasi1999emergence}. 
 
-The second signature we will discuss is clique cover number and Ramsey theory.  Clique cover number is defined as the number of complete subgraphs to cover all vertices \cite{golumbic2004algorithmic}. Ramsey theory reveals that in any sufficiently large graph, a large clique or independent set must be present \cite{graham1990ramsey}, and furthermore that a predictable and specific substructure will emerge \cite{erdos1935combinatorial}. We hypothesize cancer networks have a higher clique cover number, insinuating dense but aberrant interconnectivity. This is due to increased gene expression and mutations aiding metabolic rewiring and immune system evasion archetypal of cancer. Integrating Ramsey theory, we further conclude that we will see a clear substructure in the graph of density versus clique size in the cancer network. 
+The second signature we will discuss is clique cover number and Ramsey theory.  Clique cover number is defined as the number of complete subgraphs to cover all vertices~\cite{golumbic2004algorithmic}. Ramsey theory reveals that in any sufficiently large graph, a large clique or independent set must be present~\cite{graham1990ramsey}, and furthermore that a predictable and specific substructure will emerge~\cite{erdos1935combinatorial}. We hypothesize cancer networks have a higher clique cover number, insinuating dense but aberrant interconnectivity. This is due to increased gene expression and mutations aiding metabolic rewiring and immune system evasion archetypal of cancer. Integrating Ramsey theory, we further conclude that we will see a clear substructure in the graph of density versus clique size in the cancer network. 
 
-The third signature we will discuss is k-core decomposition. K-core decomposition measures core depth, revealing insights on the balance of connectivity. K-core decomposition works by removing nodes with a degree lower than k until all remaining nodes are k or higher \cite{seidman1983network}. Hierarchical structure is also revealed as central and peripheral nodes are differentiated \cite{batagelj2003core}. This can help identify networks that are deeply co-regulated \cite{wuchty2003evolutionary}. We hypothesize that in cancer networks, global fragmentation is high due to mutations breaking interactions, hub gene dysregulation, and sparse rewiring of the network. Furthermore, there is noisier gene expression, antagonistic and spurious gene expression, and loss of functional redundancy due to reliance on few specific pathways. 
+The third signature we will discuss is k-core decomposition. K-core decomposition measures core depth, revealing insights on the balance of connectivity. K-core decomposition works by removing nodes with a degree lower than k until all remaining nodes are k or higher~\cite{seidman1983network}. Hierarchical structure is also revealed as central and peripheral nodes are differentiated~\cite{batagelj2003core}. This can help identify networks that are deeply co-regulated~\cite{wuchty2003evolutionary}. We hypothesize that in cancer networks, global fragmentation is high due to mutations breaking interactions, hub gene dysregulation, and sparse rewiring of the network. Furthermore, there is noisier gene expression, antagonistic and spurious gene expression, and loss of functional redundancy due to reliance on few specific pathways. 
 
-The fourth and final signature to be discussed is Laplacian eigenvalue spectrum. The Laplacian matrix is found by the difference between the degree matrix and the adjacency matrix, and in our case we implemented the signed Laplacian due to the presence of negative weights \cite{kunegis2010spectral}. The algebraic connectivity measures robustness and cohesion of the graph \cite{fiedler1973algebraic}, while the multiplicity of 0 eigenvalue reveals the number of connected components. Negative eigenvalues imply presence of antagonistic modules and conflicting subgraphs \cite{hou2005bounds}. Spectral moments reflect pathway redundancy \cite{chung1997spectral}. We hypothesize that in cancer there will be a lower algebraic connectivity implying weak global connectivity. We further hypothesize that there will be more negative eigenvalues in cancer networks due to antagonistic modules and conflicting subgraphs. 
+The fourth and final signature to be discussed is Laplacian eigenvalue spectrum. The Laplacian matrix is found by the difference between the degree matrix and the adjacency matrix, and in our case we implemented the signed Laplacian due to the presence of negative weights~\cite{kunegis2010spectral}. The algebraic connectivity measures robustness and cohesion of the graph~\cite{fiedler1973algebraic}, while the multiplicity of 0 eigenvalue reveals the number of connected components. Negative eigenvalues imply presence of antagonistic modules and conflicting subgraphs~\cite{hou2005bounds}. Spectral moments reflect pathway redundancy~\cite{chung1997spectral}. We hypothesize that in cancer there will be a lower algebraic connectivity implying weak global connectivity. We further hypothesize that there will be more negative eigenvalues in cancer networks due to antagonistic modules and conflicting subgraphs. 
 
 The aim of our paper is to analyze these mathematical signatures and test significance through high-throughput analysis. If successful, it may be possible to predict and take preventative measures on people found to have cancer like gene-expression signatures. This has the potential to revolutionize genetic analysis and better the prognosis of millions of cancer patients across the world. 
 
@@ -159,13 +159,13 @@ The aim of our paper is to analyze these mathematical signatures and test signif
 \begin{tabular}{@{}llll@{}}
 \toprule
 \textbf{Metric} & \textbf{Cancer Network (Glioblastoma)} & \textbf{Normal Brain Network} \\
-\hline
+\midrule
 \textbf{Degree Distribution \& Power-Law} & Heavier tail; lower $\gamma$ ($\gamma \approx 2.0$--$2.5$); more hubs & Lighter tail; higher $\gamma$ ($\gamma \approx 2.5$--$3.5$); fewer hubs \\
-\hline
+\midrule
 \textbf{Clique Cover \& Ramsey Structure} & Higher clique cover; overlapping, conflicting communities & Lower clique cover; modular but cleaner community boundaries \\
-\hline
+\midrule
 \textbf{k-Core Decomposition} & Higher max coreness; deeper, tightly nested cores & Lower coreness; flatter, less nested hierarchy \\
-\hline
+\midrule
 \textbf{Laplacian (or Signed) Spectrum} & Spread out, with possible \textbf{negative} eigenvalues (due to dysregulation) & Tightly clustered, all positive eigenvalues; highly cohesive \\
 \bottomrule
 \end{tabular}%
@@ -179,7 +179,7 @@ The aim of our paper is to analyze these mathematical signatures and test signif
 % -----------------------------------------------------------------------------
 
 \section{Materials and Methods}
-First, we obtain data from TCGA \cite{gbmcancerdata} and GTEX \cite{normalbraindata} data sources, the former referring to cancer gene expression data and the latter referring to normal gene expression data. This allows for a comparative analysis between cancer and normal and better demonstrates the effectiveness of mathematical signatures in cancer diagnostics and prevention. Next, we use NetworkX and Python to run a gene co-expression analysis. The code will select random genes from the cancer data and find the same genes in the normal data. After filtering unwanted genes and doing relevant log transformations, it will then take the Pearson correlation coefficient of every co-expression pair. Correlations that are significant with an alpha of 0.05 will be added to the graph network. False discovery and outliers will be eliminated using Benjamini-Hochberg adjustment \cite{benjaminihochberg1995}. Finally, after the networks for both cancer and normal are finalized, then graph theory theorems will be used to analyze and compare the networks. 
+First, we obtain data from TCGA~\cite{gbmcancerdata} and GTEX~\cite{normalbraindata} data sources, the former referring to cancer gene expression data and the latter referring to normal gene expression data. This allows for a comparative analysis between cancer and normal and better demonstrates the effectiveness of mathematical signatures in cancer diagnostics and prevention. Next, we use NetworkX and Python to run a gene co-expression analysis. The code will select random genes from the cancer data and find the same genes in the normal data. After filtering unwanted genes and doing relevant log transformations, it will then take the Pearson correlation coefficient of every co-expression pair. Correlations that are significant with an alpha of 0.05 will be added to the graph network. False discovery and outliers will be eliminated using Benjamini-Hochberg adjustment~\cite{benjaminihochberg1995}. Finally, after the networks for both cancer and normal are finalized, then graph theory theorems will be used to analyze and compare the networks. 
 
 %\section{Analytical Signatures of Signed Coexpression Networks}
 In this section we formally introduce four key graph‐theoretic signatures—degree distribution and its power‐law exponent, clique cover number and Ramsey theory, $k$–core decomposition, and the signed Laplacian eigenvalue spectrum—and present the main definitions and theorems that underpin their use in distinguishing cancer from normal gene coexpression networks.
@@ -196,7 +196,7 @@ where $\alpha>1$ is the power-law exponent, $k_{\min}$ is the lower bound above 
 \]
 
 \subsection{Maximum-Likelihood Estimation (MLE) of \texorpdfstring{$\alpha$}{alpha}}
-Given observed degrees $\{k_i\}$ with $k_i \ge k_{\min}$ for $i=1,\dots,n$, the MLE of $\alpha$ for discrete data is given by \cite{clauset2009power}:
+Given observed degrees $\{k_i\}$ with $k_i \ge k_{\min}$ for $i=1,\dots,n$, the MLE of $\alpha$ for discrete data is given by~\cite{clauset2009power}:
 \[
   \widehat{\alpha}
   = 1 + n \biggl[ \sum_{i=1}^n \ln\!\Bigl(\frac{k_i}{k_{\min} - 0.5}\Bigr) \biggr]^{-1}.
@@ -206,9 +206,9 @@ This estimator minimizes the negative log-likelihood
 \[
   \mathcal{L}(\alpha) = -\,n\ln C(\alpha,k_{\min}) + \alpha \sum_{i=1}^n \ln k_i.
 \]
-In practice, one selects $k_{\min}$ by minimizing the Kolmogorov--Smirnov distance between the empirical cumulative distribution function (CDF) and the fitted power‐law CDF.
+In practice, one selects $k_{\min}$ by minimizing the Kolmogorov—Smirnov distance between the empirical cumulative distribution function (CDF) and the fitted power law CDF.
 
-\subsection{Goodness‐of‐Fit \texorpdfstring{$p$}{p}-Value via Bootstrapping}
+\subsection{Goodness~of~Fit \texorpdfstring{$p$}{p}-Value via Bootstrapping}
 To test whether the power law is a plausible fit:
 \begin{enumerate}
   \item Fit $\widehat{\alpha}$ and record the Kolmogorov--Smirnov statistic $D_{\rm obs}$.
